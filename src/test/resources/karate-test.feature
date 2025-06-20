@@ -31,3 +31,41 @@ Feature: TA Automatización de pruebas para aplicación de gestión de personaje
     When method PUT
     Then status 200
     And match response == { id: '#number', name: 'Marvel Gold Goblin', alterego: 'Boby Osborn', description: 'Student', powers: ['Armor', 'Speed'] }
+
+  @id:5 @ConsultaPersonaje @ConsultarPersonajePorIdValida
+  Scenario: T-API-TA.CA05-Consulta de personaje por id exitoso - karate
+    And path '1228'
+    When method GET
+    Then status 200
+    And match response == { id: '#number', name: '#string', alterego: '#string', description: '#string', powers: '#[] #string' }
+
+  @id:6 @ConsultaPersonaje @ConsultarPersonajePorIdNoValida
+  Scenario: T-API-TA.CA06-Consulta de personaje por id no válido - karate
+    And path '99999999'
+    When method GET
+    Then status 404
+
+  @id:7 @CreacionPersonaje @CreacionPersonajeDuplicado
+  Scenario: T-API-TA.CA07-Creación de personaje duplicado - karate
+    And request { "name": "Spider Boby 4", "alterego": "Boby", "description": "Student", "powers": ["Armor", "Flight"] }
+    When method POST
+    Then status 400
+
+  @id:8 @CreacionPersonaje @CreacionPersonajeNoValida
+  Scenario: T-API-TA.CA08-Creación de personaje con datos inválidos - karate
+    And request { "name": "", "alterego": "", "description": "", "powers": ["", "Flight"] }
+    When method POST
+    Then status 400
+
+  @id:9 @ActualizaciónPersonaje @ActualizaciónPersonajeNoExistente
+  Scenario: T-API-TA.CA09-Actualización de personaje no existente - karate
+    And path '9999999'
+    And request { "name": "Spider Boby 4", "alterego": "Boby", "description": "Student", "powers": ["Armor", "Flight"] }
+    When method PUT
+    Then status 404
+
+  @id:10 @EliminaciónPersonaje @EliminaciónDePersonajeNoExistente
+  Scenario: T-API-TA.CA10-Eliminación de personaje no existente - karate
+    And path '9999999'
+    When method DELETE
+    Then status 404
