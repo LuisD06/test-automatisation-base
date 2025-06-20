@@ -9,7 +9,7 @@ Feature: TA Automatización de pruebas para eliminación de personajes de Marvel
 
   @id:1 @EliminacionPersonaje @EliminacionDePersonajePorIdValida
   Scenario: T-API-TA.CA03-Eliminación de personaje por id exitoso - karate
-    And path '1085'
+    And path '2734'
     When method DELETE
     Then status 204
 

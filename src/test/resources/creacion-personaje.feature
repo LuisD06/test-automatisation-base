@@ -8,11 +8,11 @@ Feature: TA Automatización de pruebas para creacion de personajes de Marvel - M
 
   @id:1 @CreacionPersonaje @CreacionDePersonajeValida
   Scenario: T-API-TA.CA02-Creación de personaje exitoso - karate
-    And request { "name": "Spider Boby 4", "alterego": "Boby", "description": "Student", "powers": ["Armor", "Flight"] }
+    And request { "name": "BP Boy 2", "alterego": "Luis David Martinez", "description": "Worker", "powers": ["Programming", "Flight"] }
     When method POST
     Then status 201
-    And match response == { id: '#number', name: 'Spider Boby 4', alterego: 'Boby', description: 'Student', powers: ['Armor', 'Flight'] }
-
+    And match response == { id: '#number', name: 'BP Boy 2', alterego: 'Luis David Martinez', description: 'Worker', powers: ['Programming', 'Flight'] }
+    * print 'Personaje creado con id:', response.id
   @id:2 @CreacionPersonaje @CreacionPersonajeDuplicado
   Scenario: T-API-TA.CA07-Creación de personaje duplicado - karate
     And request { "name": "Spider Boby 4", "alterego": "Boby", "description": "Student", "powers": ["Armor", "Flight"] }
