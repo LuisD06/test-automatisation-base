@@ -20,7 +20,13 @@ Feature: TA Automatización de pruebas para creacion de personajes de Marvel - M
     Then status 400
 
   @id:3 @CreacionPersonaje @CreacionPersonajeNoValida
-  Scenario: T-API-TA.CA08-Creación de personaje con datos inválidos - karate
-    And request { "name": "", "alterego": "", "description": "", "powers": ["", "Flight"] }
+  Scenario Outline: T-API-TA.CA08-Creación de personaje con datos inválidos - karate
+    And request { "name": "<name>", "alterego": "<alterego>", "description": "<description>", "powers": <powers> }
     When method POST
     Then status 400
+    Examples:
+      | name   | alterego | description | powers                 |
+      |        |          |             | ["", "Flight"]         |
+      | Test   |          | desc        | ["Invisibility"]       |
+      |        | Test     |             | ["", "Super Strength"] |
+      | Test   | Test     | test        | []                     |

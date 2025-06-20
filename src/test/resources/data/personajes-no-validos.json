@@ -1,0 +1,28 @@
+[
+  {
+    "name": "",
+    "alterego": "",
+    "description": "",
+    "powers": [
+      "",
+      "Flight"
+    ]
+  },
+  {
+    "name": "Test",
+    "alterego": "",
+    "description": "desc",
+    "powers": [
+      "Invisibility"
+    ]
+  },
+  {
+    "name": "",
+    "alterego": "Test",
+    "description": "",
+    "powers": [
+      "",
+      "Super Strength"
+    ]
+  }
+]
